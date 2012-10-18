@@ -69,6 +69,10 @@
     theResultCode = ig_tidyOptSetBool(theTidyDocument, TidyForceOutput, YES);
     NSAssert(theResultCode >= 0, @"tidyOptSetBool() should return 0");
     
+    // Don't wrap long lines
+    theResultCode = ig_tidyOptSetInt(theTidyDocument, TidyWrapLen, 0);
+    NSAssert(theResultCode >= 0, @"tidyOptSetInt() should return 0");
+    
     // Set encoding - same for input and output
     theResultCode = ig_tidySetInCharEncoding(theTidyDocument, inEncoding.UTF8String);
     NSAssert(theResultCode >= 0, @"tidySetInCharEncoding() should return 0");
